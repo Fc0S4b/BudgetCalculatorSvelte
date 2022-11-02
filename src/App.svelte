@@ -1,23 +1,16 @@
-<script>
-  export let name;
-</script>
+<!-- <script></script> -->
+<!-- JAVASCRIPT/LOGIC -->
 
-<h1>hello {name}!</h1>
-<i class="fas fa-home fa-5x" />
+<!-- <style></style> -->
+<!-- CSS/STYLING -->
 
-<style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
-</style>
+<!-- HTML -->
+<nav class="nav">
+  <div class="nav-center">
+    <h1 class="nav-title">budget calculator</h1>
+    <button type="button" class="nav-btn">
+      <i class="far fa-plus-square" />
+      add item
+    </button>
+  </div>
+</nav>
