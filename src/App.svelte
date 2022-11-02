@@ -6,5 +6,9 @@
 <!-- <style></style> -->
 <!-- CSS/STYLING -->
 
+<!-- "props" shorhand for properties makes components dynamic set from outside -->
+
 <Navbar />
+<Title title="add expense" />
+<Title title="expense list" />
 <Title />
