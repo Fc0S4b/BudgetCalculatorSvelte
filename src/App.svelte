@@ -1,24 +1,12 @@
 <script>
   import Navbar from './Navbar.svelte';
   import Title from './Title.svelte';
-  import Example from './Example.svelte';
+  let fruits = ['apple', 'orange', 'lemon'];
 </script>
 
-<!-- <style></style> -->
-<!-- CSS/STYLING -->
-
 <Navbar />
-<Title title="add expense" />
-<Title title="expense list" />
-<Title />
-<Example />
-<span>hello from app</span>
 
-<style>
-  /* no name collisions */
-  /* css bundle gestiona las clases añadiendo id únicos */
-  span {
-    background: green;
-    color: blue;
-  }
-</style>
+{#each fruits as item}
+  <!-- <h1>fruit: {item}</h1> -->
+  <Title title={item} />
+{/each}
