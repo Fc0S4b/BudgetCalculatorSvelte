@@ -10,11 +10,11 @@
   function toggleAmount() {
     displayAmount = !displayAmount;
   }
+  export let removeExpense;
 </script>
 
 <article class="single-expense">
   <div class="expense-info">
-    <!-- on:click|once once es modifiers que hace que se ejecute solo una vez la función de onclick, hay varios mas como preventDefault -->
     <h2>
       {name}
       <button class="amount-btn" on:click={toggleAmount}>
@@ -29,7 +29,7 @@
     <button class="expense-btn edit-btn">
       <i class="fas fa-pen" />
     </button>
-    <button class="expense-btn delete-btn">
+    <button class="expense-btn delete-btn" on:click={() => removeExpense(id)}>
       <i class="fas fa-trash" />
     </button>
   </div>
