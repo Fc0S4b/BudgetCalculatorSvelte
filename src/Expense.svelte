@@ -7,13 +7,17 @@
   export let name = '';
   export let amount = 0;
   let displayAmount = false;
+  function toggleAmount() {
+    displayAmount = !displayAmount;
+  }
 </script>
 
 <article class="single-expense">
   <div class="expense-info">
+    <!-- on:click|once once es modifiers que hace que se ejecute solo una vez la función de onclick, hay varios mas como preventDefault -->
     <h2>
       {name}
-      <button class="amount-btn">
+      <button class="amount-btn" on:click={toggleAmount}>
         <i class="fas fa-caret-down" />
       </button>
     </h2>
