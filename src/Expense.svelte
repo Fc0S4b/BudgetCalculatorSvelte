@@ -1,8 +1,5 @@
 <script>
-  // export let index;
-  // export let expense;
-  // let { name, amount, id } = expense;
-  // si pasas el prop con spread operator, puedes recuperar las props así: (los iguales son valores default)
+  import { getContext } from 'svelte';
   export let id;
   export let name = '';
   export let amount = 0;
@@ -10,7 +7,9 @@
   function toggleAmount() {
     displayAmount = !displayAmount;
   }
-  export let removeExpense;
+  const removeExpense = getContext('remove');
+  // si usas remove la función debe llamarse remove no removeExpense
+  // const { remove } = getContext('state');
 </script>
 
 <article class="single-expense">
