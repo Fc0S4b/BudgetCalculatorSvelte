@@ -12,18 +12,19 @@
   function removeExpense(id) {
     expenses = expenses.filter((item) => item.id !== id);
   }
+  function clearExpenses() {
+    expenses = [];
+  }
   // context
   setContext('remove', removeExpense);
-
-  function deleteExpense(event) {
-    // console.log(event); // customEvent al presionar el botón delete, podemos obetener el id y name del objeto
-    const {id, name} = event.detail;
-    // console.log(name) //Hello from the expense
-    removeExpense(id)
-  }
 </script>
 
 <Navbar />
 <main class="content">
-  <ExpensesList {expenses} on:delete={deleteExpense} />
+  <ExpensesList {expenses} />
+  <button
+    type="button"
+    class="btn btn-primary btn-block"
+    on:click={clearExpenses}>clear expenses</button
+  >
 </main>

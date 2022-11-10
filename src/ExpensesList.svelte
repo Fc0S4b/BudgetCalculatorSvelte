@@ -8,9 +8,9 @@
   <SectionTitle title="expense list" />
   <ul>
     {#each expenses as expense, index}
-      <Expense {...expense} on:delete />
+      <Expense {...expense} />
     {:else}
-      <h2>currently you have no expenses</h2>
+      <h2>no expenses added to the list</h2>
     {/each}
   </ul>
 </section>
