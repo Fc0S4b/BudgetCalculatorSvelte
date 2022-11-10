@@ -1,11 +1,6 @@
 <script>
   import { setContext } from 'svelte';
-  // multiple context or one object with set of functions
-  // const state = {
-  //   name: 'simple name',
-  //   remove: removeExpense,
-  // };
-  // components
+
   import Navbar from './Navbar.svelte';
   import ExpensesList from './ExpensesList.svelte';
   // data
@@ -19,10 +14,16 @@
   }
   // context
   setContext('remove', removeExpense);
-  // setContext('state', state);
+
+  function deleteExpense(event) {
+    // console.log(event); // customEvent al presionar el botón delete, podemos obetener el id y name del objeto
+    const {id, name} = event.detail;
+    // console.log(name) //Hello from the expense
+    removeExpense(id)
+  }
 </script>
 
 <Navbar />
 <main class="content">
-  <ExpensesList {expenses} />
+  <ExpensesList {expenses} on:delete={deleteExpense} />
 </main>
