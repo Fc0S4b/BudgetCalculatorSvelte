@@ -6,11 +6,16 @@
   // a truthy value is considered true when encountered in boolean context
 
   $: isEmpty = !name || !amount;
+  function handleSubmit() {
+    console.log({ name, amount });
+    name = '';
+    amount = null;
+  }
 </script>
 
 <section class="form">
   <Title title="add expense" />
-  <form class="expense-form">
+  <form class="expense-form" on:submit|preventDefault={handleSubmit}>
     <div class="form-control">
       <label for="name">name</label>
       <input type="text" id="name" bind:value={name} />
