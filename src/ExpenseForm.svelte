@@ -2,12 +2,13 @@
   import Title from './Title.svelte';
   let name = '';
   let amount = null;
+  export let addExpense;
   // $: console.log({ name, amount });
   // a truthy value is considered true when encountered in boolean context
 
   $: isEmpty = !name || !amount;
   function handleSubmit() {
-    console.log({ name, amount });
+    addExpense({ amount, name });
     name = '';
     amount = null;
   }

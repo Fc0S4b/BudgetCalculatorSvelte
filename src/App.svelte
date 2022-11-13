@@ -21,13 +21,18 @@
   function clearExpenses() {
     expenses = [];
   }
+  function addExpense({ name, amount }) {
+    // console.log(name, amount);
+    let expense = { id: Math.random() * Date.now(), name, amount };
+    expenses = [expense, ...expenses];
+  }
   // context
   setContext('remove', removeExpense);
 </script>
 
 <Navbar />
 <main class="content">
-  <ExpenseForm />
+  <ExpenseForm {addExpense} />
   <Totals title="total expenses" {total} />
   <ExpensesList {expenses} />
   <button
