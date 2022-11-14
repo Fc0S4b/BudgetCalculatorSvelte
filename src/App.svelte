@@ -26,9 +26,25 @@
   function clearExpenses() {
     expenses = [];
   }
-  function addExpense({ name, amount }) {
+  function handleSubmit() {
+    if (isEditing) {
+      editingExpense();
+    } else {
+      addExpense();
+    }
+    setId = null;
+    setAmount = null;
+    setName = '';
+  }
+  $: console.log({ setName, setAmount });
+  // function addExpense({ name, amount }) {
+  //   // console.log(name, amount);
+  //   let expense = { id: Math.random() * Date.now(), name, amount };
+  //   expenses = [expense, ...expenses];
+  // }
+  function addExpense() {
     // console.log(name, amount);
-    let expense = { id: Math.random() * Date.now(), name, amount };
+    let expense = { id: Math.random(), name: setName, amount: setAmount };
     expenses = [expense, ...expenses];
   }
   function setModifiedExpense(id) {
@@ -38,13 +54,23 @@
     setName = expense.name;
     setAmount = expense.amount;
   }
-  function editingExpense({ name, amount }) {
+  // function editingExpense({ name, amount }) {
+  //   expenses = expenses.map((item) => {
+  //     return item.id === setId ? { ...item, name, amount } : { ...item };
+  //   });
+  //   setId = null;
+  //   setAmount = null;
+  //   setName = '';
+  // }
+  function editingExpense() {
     expenses = expenses.map((item) => {
-      return item.id === setId ? { ...item, name, amount } : { ...item };
+      return item.id === setId
+        ? { ...item, name: setName, amount: setAmount }
+        : { ...item };
     });
-    setId = null;
-    setAmount = null;
-    setName = '';
+    // setId = null;
+    // setAmount = null;
+    // setName = '';
   }
   // context
   setContext('remove', removeExpense);
@@ -54,11 +80,10 @@
 <Navbar />
 <main class="content">
   <ExpenseForm
-    {addExpense}
-    name={setName}
-    amount={setAmount}
+    bind:name={setName}
+    bind:amount={setAmount}
+    {handleSubmit}
     {isEditing}
-    {editingExpense}
   />
   <Totals title="total expenses" {total} />
   <ExpensesList {expenses} />
