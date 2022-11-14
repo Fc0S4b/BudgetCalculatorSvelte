@@ -1,14 +1,18 @@
 <script>
   import Title from './Title.svelte';
-  let name = '';
-  let amount = null;
+  export let name = '';
+  export let amount = null;
   export let addExpense;
-  // $: console.log({ name, amount });
-  // a truthy value is considered true when encountered in boolean context
+  export let isEditing;
+  export let editingExpense;
 
   $: isEmpty = !name || !amount;
   function handleSubmit() {
-    addExpense({ amount, name });
+    if (isEditing) {
+      editingExpense({ name, amount });
+    } else {
+      addExpense({ amount, name });
+    }
     name = '';
     amount = null;
   }
@@ -34,7 +38,7 @@
       class:disabled={isEmpty}
       disabled={isEmpty}
     >
-      add expense
+      {#if isEditing} edit expense {:else} add expense{/if}
     </button>
     <button type="button" class="close-btn">
       <i class="fas fa-times" />
