@@ -2,21 +2,21 @@
   import Title from './Title.svelte';
   export let name = '';
   export let amount = null;
-  // export let addExpense;
+  export let addExpense;
   export let isEditing;
-  export let handleSubmit;
-  // export let editingExpense;
+  export let editingExpense;
+  export let hideForm;
 
   $: isEmpty = !name || !amount;
-  // function handleSubmit() {
-  //   if (isEditing) {
-  //     editingExpense({ name, amount });
-  //   } else {
-  //     addExpense({ amount, name });
-  //   }
-  //   name = '';
-  //   amount = null;
-  // }
+  function handleSubmit() {
+    if (isEditing) {
+      editingExpense({ name, amount });
+    } else {
+      addExpense({ amount, name });
+    }
+    name = '';
+    amount = null;
+  }
 </script>
 
 <section class="form">
@@ -41,7 +41,7 @@
     >
       {#if isEditing} edit expense {:else} add expense{/if}
     </button>
-    <button type="button" class="close-btn">
+    <button type="button" class="close-btn" on:click={hideForm}>
       <i class="fas fa-times" />
       close
     </button>
