@@ -1,5 +1,5 @@
 <script>
-  import { setContext, onMount } from 'svelte';
+  import { setContext, onMount, afterUpdate } from 'svelte';
 
   // components
   import Navbar from './Navbar.svelte';
@@ -39,13 +39,11 @@
   }
   function clearExpenses() {
     expenses = [];
-    setLocalStorage();
   }
   function addExpense({ name, amount }) {
     // console.log(name, amount);
     let expense = { id: Math.random() * Date.now(), name, amount };
     expenses = [expense, ...expenses];
-    setLocalStorage();
   }
   function setModifiedExpense(id) {
     let expense = expenses.find((item) => item.id === id);
@@ -62,7 +60,6 @@
     setId = null;
     setAmount = null;
     setName = '';
-    setLocalStorage();
   }
   // context
   setContext('remove', removeExpense);
@@ -75,6 +72,11 @@
     expenses = localStorage.getItem('expenses')
       ? JSON.parse(localStorage.getItem('expenses'))
       : [];
+  });
+  afterUpdate(() => {
+    // console.log('after update'); se ejecuta cuando editas un item, eliminas o actualizas la página entonces puedes usar setLocalStorage en un solo lugar
+    // asegúrate de que lo que retornes aquí no requiera demasiados recursos, ya que esto se ejecuta muchas veces o que tome demasiadas llamadas a una API
+    setLocalStorage();
   });
 </script>
 
