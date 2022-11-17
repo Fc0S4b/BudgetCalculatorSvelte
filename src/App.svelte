@@ -82,14 +82,16 @@
 <Navbar {showForm} />
 <main class="content">
   {#if isFormOpen}
-    <ExpenseForm
-      {addExpense}
-      name={setName}
-      amount={setAmount}
-      {isEditing}
-      {editingExpense}
-      {hideForm}
-    />
+    <Modal>
+      <ExpenseForm
+        {addExpense}
+        name={setName}
+        amount={setAmount}
+        {isEditing}
+        {editingExpense}
+        {hideForm}
+      />
+    </Modal>
   {/if}
   <Totals title="total expenses" {total} />
   <ExpensesList {expenses} />
@@ -99,10 +101,3 @@
     on:click={clearExpenses}>clear expenses</button
   >
 </main>
-<Modal>
-  <h1 slot="header">hello world</h1>
-  <p slot="footer">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum aut a animi
-    fugit dolore ducimus, ex quo consectetur nobis cupiditate!
-  </p>
-</Modal>

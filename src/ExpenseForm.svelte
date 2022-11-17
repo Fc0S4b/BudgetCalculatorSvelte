@@ -29,6 +29,7 @@
     }
     name = '';
     amount = null;
+    hideForm();
   }
 </script>
 
