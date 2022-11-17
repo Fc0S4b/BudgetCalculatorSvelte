@@ -6,6 +6,7 @@
   import ExpensesList from './ExpensesList.svelte';
   import Totals from './Totals.svelte';
   import ExpenseForm from './ExpenseForm.svelte';
+  import Modal from './Modal.svelte';
   // data
   // import expensesData from './expenses';
 
@@ -74,8 +75,6 @@
       : [];
   });
   afterUpdate(() => {
-    // console.log('after update'); se ejecuta cuando editas un item, eliminas o actualizas la página entonces puedes usar setLocalStorage en un solo lugar
-    // asegúrate de que lo que retornes aquí no requiera demasiados recursos, ya que esto se ejecuta muchas veces o que tome demasiadas llamadas a una API
     setLocalStorage();
   });
 </script>
@@ -100,3 +99,10 @@
     on:click={clearExpenses}>clear expenses</button
   >
 </main>
+<Modal>
+  <h1 slot="header">hello world</h1>
+  <p slot="footer">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum aut a animi
+    fugit dolore ducimus, ex quo consectetur nobis cupiditate!
+  </p>
+</Modal>
