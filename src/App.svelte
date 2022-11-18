@@ -1,4 +1,5 @@
 <script>
+  import Github from './Github.svelte';
   import { setContext, onMount, afterUpdate } from 'svelte';
 
   // components
@@ -81,7 +82,8 @@
 
 <Navbar {showForm} />
 <main class="content">
-  {#if isFormOpen}
+  <Github />
+  <!-- {#if isFormOpen}
     <Modal>
       <ExpenseForm
         {addExpense}
@@ -99,5 +101,5 @@
     type="button"
     class="btn btn-primary btn-block"
     on:click={clearExpenses}>clear expenses</button
-  >
+  > -->
 </main>
